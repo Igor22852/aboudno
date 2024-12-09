@@ -408,7 +408,54 @@
           <span class="_900-2002-span2">руб./200г</span>
         </span>
       </div>
-      <img class="icons-8-forward-26-113" src="icons-8-forward-26-112.png" />
+      <img src="icons-8-forward-26-113.png" alt="Forward Icon" class="icons-8-forward-26-113" id="forwardIcon">
+
+      <!-- Модальное окно -->
+      <div id="myModal" class="modal">
+          <div class="modal-content">
+              <span class="close">&times;</span>
+              <h2>Введите количество сыра (минимум 200 г):</h2>
+              <input type="number" id="cheeseAmount" min="200" required>
+              <button id="submitButton">Отправить</button>
+              <p id="confirmationMessage"></p>
+          </div>
+      </div>
+
+      <script>
+        // Получаем элементы DOM
+const modal = document.getElementById("myModal");
+const forwardIcon = document.getElementById("forwardIcon");
+const closeBtn = document.getElementsByClassName("close")[0];
+const submitButton = document.getElementById("submitButton");
+const confirmationMessage = document.getElementById("confirmationMessage");
+
+// Открываем модальное окно при нажатии на картинку
+forwardIcon.onclick = function() {
+    modal.style.display = "block";
+}
+
+// Закрываем модальное окно при нажатии на крестик
+closeBtn.onclick = function() {
+    modal.style.display = "none";
+}
+
+// Закрываем модальное окно при клике вне его области
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+// Обработка отправки формы
+submitButton.onclick = function() {
+    const cheeseAmount = document.getElementById("cheeseAmount").value;
+    if (cheeseAmount >= 200) {
+        confirmationMessage.textContent = "Товар добавлен в корзину.";
+    } else {
+        confirmationMessage.textContent = "Пожалуйста, введите количество не менее 200 г.";
+    }
+}
+      </script>  
     </div>
     <div class="_172">
       <span>
